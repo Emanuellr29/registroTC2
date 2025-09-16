@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "791947137545",
+    "project_id": "escuela-13b08",
+    "storage_bucket": "escuela-13b08.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791947137545:android:bdaf7b5a9ccaf2c289ded8",
+        "android_client_info": {
+          "package_name": "com.example.actividad1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeubLZqNyi7u8kdc1le93rLu7IWgbW-Pk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
