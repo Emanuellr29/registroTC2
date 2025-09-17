@@ -82,9 +82,11 @@ class MainActivity : AppCompatActivity() {
         ///logica de conexion
         auth.signInWithEmailAndPassword(usuario, pass).addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
+
                 val ventana2 = Intent(this, principal::class.java)
                 ventana2.putExtra("idUsuario", usuario )
                 startActivity(ventana2)
+
                 Toast.makeText(this, "Conexion Exitosa", Toast.LENGTH_SHORT).show()
             }else{
                 Toast.makeText(this, "Error al Iniciar", Toast.LENGTH_LONG).show()
