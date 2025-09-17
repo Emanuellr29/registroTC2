@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
             if (task.isSuccessful) {
 
                 val ventana2 = Intent(this, principal::class.java)
-                ventana2.putExtra("idUsuario", usuario )
+                ventana2.putExtra("usuario", usuario )
                 startActivity(ventana2)
 
                 Toast.makeText(this, "Conexion Exitosa", Toast.LENGTH_SHORT).show()
