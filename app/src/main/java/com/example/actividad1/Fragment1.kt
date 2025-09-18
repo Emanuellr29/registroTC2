@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import org.w3c.dom.Text
+import kotlin.getValue
 
 class Fragment1 : Fragment() {
 

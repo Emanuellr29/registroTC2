@@ -31,8 +31,7 @@ class Fragment2 : Fragment() {
         txtusuario.text=datousuario
 
         btnatras.setOnClickListener {
-            findNavController().navigate(Fragment2Directions.actionFragment2ToFragment1())
-            txtusuario.text=datousuario
+            findNavController().popBackStack()
         }
 
         btnsalir.setOnClickListener {
