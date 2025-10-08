@@ -8,8 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.firebase.auth.FirebaseAuth
 
 class Fragment2 : Fragment() {
     val args: Fragment2Args by navArgs()
@@ -28,7 +30,9 @@ class Fragment2 : Fragment() {
         val txtusuario = view.findViewById<TextView>(R.id.textViewNombreUser)
         val btnatras = view.findViewById<Button>(R.id.buttonInicio)
         val btnsalir = view.findViewById<Button>(R.id.buttonSalir)
-        txtusuario.text=datousuario
+        txtusuario.text = datousuario
+        val btnfrag3 = view.findViewById<Button>(R.id.bottonFragment3)
+        val numero5: String = "5"
 
         btnatras.setOnClickListener {
             findNavController().popBackStack()
@@ -38,7 +42,10 @@ class Fragment2 : Fragment() {
             val intent = Intent(requireActivity(), MainActivity::class.java)
             startActivity(intent)
         }
+
+        btnfrag3.setOnClickListener {
+            findNavController().navigate(Fragment2Directions.actionFragment2ToFragmentexam(numero5))
+
+        }
     }
-
-
 }

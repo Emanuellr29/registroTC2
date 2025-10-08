@@ -12,7 +12,12 @@
         tools:layout="@layout/fragment_1" >
         <action
             android:id="@+id/action_fragment1_to_fragment2"
-            app:destination="@id/fragment2" />
+            app:destination="@id/fragment2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
     </fragment>
     <fragment
         android:id="@+id/fragment2"
@@ -25,5 +30,17 @@
         <action
             android:id="@+id/action_fragment2_to_fragment1"
             app:destination="@id/fragment1" />
+        <action
+            android:id="@+id/action_fragment2_to_fragmentexam"
+            app:destination="@id/fragmentexam" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentexam"
+        android:name="com.example.actividad1.fragmentexam"
+        android:label="fragmentexam"
+        tools:layout="@layout/fragmentexam" >
+        <argument
+            android:name="cinco"
+            app:argType="string" />
     </fragment>
 </navigation>

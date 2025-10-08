@@ -32,8 +32,11 @@ class MainActivity : AppCompatActivity() {
         val txtUsuario = findViewById<EditText>(R.id.Email)
         val txtPass = findViewById<EditText>(R.id.Password)
         val liga = findViewById<TextView>(R.id.textView)
-
-        auth = FirebaseAuth.getInstance()
+        val nombre: String = "Emanuel"
+        val contraseña: String = "2025ico9"
+        txtUsuario.setText(nombre)
+        txtPass.setText(contraseña)
+        //auth = FirebaseAuth.getInstance()
 
 
         btnlog.setOnClickListener {
@@ -57,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "introduce usuario y/o contraseña", Toast.LENGTH_LONG)
                     .show()
             } else {
-                registro(txtUsuario.text.toString(), txtPass.text.toString())
+                //registro(txtUsuario.text.toString(), txtPass.text.toString())
 
 
                 btnreg.isEnabled = true
@@ -80,8 +83,8 @@ class MainActivity : AppCompatActivity() {
 
     fun login(usuario: String, pass: String) {
         ///logica de conexion
-        auth.signInWithEmailAndPassword(usuario, pass).addOnCompleteListener(this) { task ->
-            if (task.isSuccessful) {
+        //auth.signInWithEmailAndPassword(usuario, pass).addOnCompleteListener(this) { task ->
+            if (usuario == "Emanuel" && pass == "2025ico9") {
 
                 val ventana2 = Intent(this, principal::class.java)
                 ventana2.putExtra("usuario", usuario )
@@ -94,14 +97,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun registro(usuario: String, pass: String){
-        ///logica de registro
-        auth.createUserWithEmailAndPassword(usuario,pass).addOnCompleteListener(this) {task -> 
-            if(task.isSuccessful){
-                Toast.makeText(this, "Usuario Creado", Toast.LENGTH_LONG).show()
-            }else{
-                Toast.makeText(this, "Error al crear Usuario", Toast.LENGTH_LONG).show()
-            }
-        }
-    }
-}

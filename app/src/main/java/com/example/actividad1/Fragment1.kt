@@ -1,5 +1,6 @@
 package com.example.actividad1
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -29,6 +30,7 @@ class Fragment1 : Fragment() {
         //creamos variables
         val btn1 = view.findViewById<Button>(R.id.buttonPerfil)
         val textuser = view.findViewById<TextView>(R.id.textViewVacio)
+        val btnsalir = view.findViewById<TextView>(R.id.buttonSalir)
 
         //recuperar los datos enviados por el ususario
         val correo = arguments?.getString("usuario")
@@ -43,7 +45,11 @@ class Fragment1 : Fragment() {
 
         btn1.setOnClickListener {
             findNavController().navigate(Fragment1Directions.actionFragment1ToFragment2(usr))
+        }
 
+        btnsalir.setOnClickListener {
+            val intent = Intent(requireActivity(), MainActivity::class.java)
+            startActivity(intent)
         }
 
     }
