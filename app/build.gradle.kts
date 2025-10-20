@@ -9,6 +9,10 @@ android {
     namespace = "com.example.actividad1"
     compileSdk = 36
 
+    buildFeatures{
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.example.actividad1"
         minSdk = 24
@@ -44,6 +48,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.recyclerview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -53,4 +58,8 @@ dependencies {
     //para los fragments
     implementation("androidx.navigation:navigation-ui:2.9.3")
     implementation("androidx.navigation:navigation-fragment-ktx:2.9.3")
+
+    implementation("com.google.firebase:firebase-firestore-ktx:24.4.0")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation(platform("com.google.firebase:firebase-bom:34.4.0"))
 }

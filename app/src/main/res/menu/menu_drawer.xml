@@ -1,4 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
 
+    <group android:checkableBehavior="single">
+
+        <item
+
+            android:icon="@drawable/home"
+            android:title="Inicio"
+            android:id="@+id/fragment1"
+            />
+
+        <item
+
+            android:icon="@drawable/usericon"
+            android:title="Perfil"
+            android:id="@+id/fragment2"
+            />
+        <item
+
+            android:icon="@drawable/calculadora"
+            android:title="Ir a calculadora"
+            android:id="@+id/fragmentexam"
+            />
+
+    </group>
 </menu>
