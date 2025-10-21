@@ -47,7 +47,7 @@ class Fragment1 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_1, container, false)
+        //return inflater.inflate(R.layout.fragment_1, container, false)
         _binding = Fragment1Binding.inflate(inflater, container, false)
         return binding.root
     }
@@ -56,9 +56,9 @@ class Fragment1 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //creamos variables
-        val btn1 = view.findViewById<Button>(R.id.buttonPerfil)
-        val textuser = view.findViewById<TextView>(R.id.textViewVacio)
-        val btnsalir = view.findViewById<TextView>(R.id.buttonSalir)
+//        val btn1 = view.findViewById<Button>(R.id.buttonPerfil)
+       val textuser = view.findViewById<TextView>(R.id.textViewVacio)
+//        val btnsalir = view.findViewById<TextView>(R.id.buttonSalir)
 
         //recuperar los datos enviados por el ususario
         val correo = arguments?.getString("usuario")
@@ -97,6 +97,8 @@ class Fragment1 : Fragment() {
         binding.floatingActionButton.setOnClickListener {
             mostrarDialogoNuevaTarea()
         }
+
+        obtenerTareasDeFirestore()
 //        binding.buttonSalir.setOnClickListener {
 //            val intent = android.content.Intent(requireActivity(), MainActivity::class.java)
 //            startActivity(intent)
@@ -157,7 +159,7 @@ class Fragment1 : Fragment() {
     private fun agregarNuevaTarea(titulo: String, descripcion: String){
         val currentUserId = auth.currentUser?.uid
         if(currentUserId == null){
-            android.util.Log.e("Fragament1", "Usuario no autenticado. No se puede guardar la tarea. ")
+            android.util.Log.e("Fragment1", "Usuario no autenticado. No se puede guardar la tarea. ")
             return
         }
         val nuevaTarea = miTarea(
