@@ -85,21 +85,23 @@ class Fragment1 : Fragment() {
             onItemClickAction,
             onDeleteClickAction
         )
-
         binding.recycle.apply {
             adapter = tareaAdapter
             layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
+            setHasFixedSize(true)
         }
 
         binding.buttonPerfil.setOnClickListener {
             findNavController().navigate(Fragment1Directions.actionFragment1ToFragment2(usr))
         }
-
-        binding.buttonSalir.setOnClickListener {
-            val intent = android.content.Intent(requireActivity(), MainActivity::class.java)
-            startActivity(intent)
+        binding.floatingActionButton.setOnClickListener {
+            mostrarDialogoNuevaTarea()
         }
-        obtenerTareasDeFirestore()
+//        binding.buttonSalir.setOnClickListener {
+//            val intent = android.content.Intent(requireActivity(), MainActivity::class.java)
+//            startActivity(intent)
+//        }
+//        obtenerTareasDeFirestore()
 
 //        btn1.setOnClickListener {
 //            findNavController().navigate(Fragment1Directions.actionFragment1ToFragment2(usr))
