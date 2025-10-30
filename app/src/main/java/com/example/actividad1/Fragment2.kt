@@ -61,7 +61,7 @@ class Fragment2 : Fragment() {
             val resId = bundle.getInt("resId", 0)
             imagenSeleccionada = resId.toLong()
             android.util.Log.d("Fragment2", "ImagenSeleccionada: $imagenSeleccionada")
-            mostrarDiaologoNuevaTarea()
+            mostrarDialogoNuevaTarea()
         }
 
         var datousuario = args.usuario
@@ -87,11 +87,11 @@ class Fragment2 : Fragment() {
         }
 
         val onItemClickAction: (imgTarea) -> Unit = { tarea ->
-            android.util.Log.d("Fragment3", "Clic en la tarea (Editar): ${tarea.titulo}!")
+            android.util.Log.d("Fragment2", "Clic en la tarea (Editar): ${tarea.titulo}!")
         }
 
         val onDeleteClickAction: (imgTarea) -> Unit = {tarea ->
-            android.util.Log.d("Fragment3", "Solicitando borrar tarea: ${tarea.titulo}")
+            android.util.Log.d("Fragment2", "Solicitando borrar tarea: ${tarea.titulo}")
             borrarTarea(tarea)
 
         }
@@ -102,39 +102,23 @@ class Fragment2 : Fragment() {
             onDeleteClickAction
         )
 
-        binding
+        // Esto configura el RecyclerView
+        binding.recycleViewImg.apply {
+            adapter = tareaAdapter
+            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
+            setHasFixedSize(true)
+        }
+
+        obtenerTareasDeFirestore()
     }
 
-    private fun  mostrarDiaologoNuevaTarea(){
-        val context = requireContext()
-        val tituloInput = EditText(context).apply { hint = "Titulo de la tarea" }
-        val descripcionInput = EditText(context).apply { hint = "Descripcion (Opcional)" }
-        val layout = android.widget.LinearLayout(context).apply {
-            orientation = android.widget.LinearLayout.VERTICAL
-            setPadding(50,50,50,50)
-            addView(tituloInput)
-            addView(descripcionInput)
-        }
-        AlertDialog.Builder(context)
-            .setTitle("Añador Nueva Tarea")
-            .setView(layout)
-            .setPositiveButton("Guardar"){ _, _ ->
-                val titulo = tituloInput.text.toString().trim()
-                val descripcion = descripcionInput.text.toString().trim()
-                if(titulo.isNotEmpty()){
-                    agregarNuevaTarea(titulo,descripcion)
-                }
-            }
-            .setNegativeButton("Cancelar", null)
-            .show()
-    }
 
     private fun borrarTarea(tarea: imgTarea) {
         if (tarea.id.isEmpty()) {
             android.util.Log.e("Fragment2", "ID de tarea vacío, no se puede borrar")
             return
         }
-        db.collection("Tareas").document(tarea.id)
+        db.collection("TareasConImagen").document(tarea.id)
             .delete()
             .addOnSuccessListener {
                 android.util.Log.d("Fragment2", "Tarea con ID ${tarea.id} eliminada.")
@@ -158,7 +142,7 @@ class Fragment2 : Fragment() {
             imgId = (if(imagenSeleccionada != 0L) imagenSeleccionada else R.drawable.imagen1.toLong())
         )
 
-        db.collection("Tareas")
+        db.collection("TareasConImagen")
             .add(nuevaTarea)
             .addOnSuccessListener { android.util.Log.d("Fragment2","Tarea Añadidda con exito: ${it.id}") }
             .addOnFailureListener { e -> android.util.Log.e("Fragment2","Error al añadir la tarea", e)
@@ -199,12 +183,12 @@ class Fragment2 : Fragment() {
         }
         android.util.Log.d("Fragement2", "DIAGNOSITO 1: Usuario autenticado. UID: $userId. Iniciado escucha de Firestore...")
 
-        db.collection("Tareas")
+        db.collection("TareasConImagen")
             //.whereEqualTo("userId", userId) // <-- ¡IMPORTANTE! El PDF te guía a hacer esto por seguridad
             .orderBy("creadoEn", com.google.firebase.firestore.Query.Direction.DESCENDING)
             .addSnapshotListener { snapshot, e ->
                 if (e != null) {
-                    android.util.Log.w("Fragment1", "Error al escuchar cambios en Firestore.", e)
+                    android.util.Log.w("Fragment2", "Error al escuchar cambios en Firestore.", e)
                     return@addSnapshotListener
                 }
 
@@ -231,12 +215,12 @@ class Fragment2 : Fragment() {
 
                         }
                     }
-                    android.util.Log.d("Fragment1", "DIAGNOSTICO 6: Carga completa. ${nuevasTareas.size} tareas.")
+                    android.util.Log.d("Fragment2", "DIAGNOSTICO 6: Carga completa. ${nuevasTareas.size} tareas.")
                     if(::tareaAdapter.isInitialized) {
                         tareaAdapter.updateData(nuevasTareas)
                     }
                 } else {
-                    android.util.Log.d("Fragment1", "Snapshot es nulo.")
+                    android.util.Log.d("Fragment2", "Snapshot es nulo.")
                 }
             }
     }

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.example.actividad1.Fragment1.TareaAdapter
 import com.example.actividad1.databinding.ItemBinding
 import androidx.recyclerview.widget.RecyclerView
+import com.example.actividad1.databinding.ItemimgBinding
 
 class AdaptadorTarea(private val tareas: MutableList<Fragment2.imgTarea>,
                      private val onItemClicked: (Fragment2.imgTarea) -> Unit, // para editar
@@ -16,15 +17,15 @@ class AdaptadorTarea(private val tareas: MutableList<Fragment2.imgTarea>,
 
     // ViewHolder interno
     // Necesitarás importar 'ItemBinding' (Alt + Enter)
-    inner class TareaImgVH(private val binding: ItemBinding) :
+    inner class TareaImgVH(private val binding: ItemimgBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(tarea: Fragment2.imgTarea) {
-            binding.TVTitulo.text = tarea.titulo
-            binding.TVDescripcion.text = tarea.descripcion
+            binding.tvTitulo.text = tarea.titulo
+            binding.tvDescripcion.text = tarea.descripcion
 
             val res = if(tarea.imgId != 0L) tarea.imgId.toInt() else R.drawable.imagen1
-            binding.imgTarea.setImageResource(res)
+            binding.imgTarea1.setImageResource(res)
 
             // Clic para editar
             binding.root.setOnClickListener { onItemClicked(tarea) }
@@ -35,7 +36,7 @@ class AdaptadorTarea(private val tareas: MutableList<Fragment2.imgTarea>,
 
     // Métodos obligatorios del Adapter
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TareaImgVH {
-        val binding = ItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemimgBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TareaImgVH(binding)
     }
 
