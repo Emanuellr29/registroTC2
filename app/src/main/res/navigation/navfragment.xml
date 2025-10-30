@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_fragment2_to_fragmentexam"
             app:destination="@id/fragmentexam" />
+        <action
+            android:id="@+id/action_fragment2_to_fragmentIgm"
+            app:destination="@id/fragmentIgm" />
     </fragment>
     <fragment
         android:id="@+id/fragmentexam"
@@ -43,4 +46,9 @@
             android:name="cinco"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentIgm"
+        android:name="com.example.actividad1.FragmentIgm"
+        android:label="fragment_igm"
+        tools:layout="@layout/fragment_igm" />
 </navigation>
