@@ -57,7 +57,7 @@ class Fragment2 : Fragment() {
             findNavController().navigate(R.id.action_fragment2_to_fragmentIgm)
         }
         //aqui se selecciona la imagen y se obtiene el id de la imagen seleccionada
-        setFragmentResultListener("imagen seleccionada"){ _, bundle ->
+        setFragmentResultListener("imagenSeleccionada"){ _, bundle ->
             val resId = bundle.getInt("resId", 0)
             imagenSeleccionada = resId.toLong()
             android.util.Log.d("Fragment2", "ImagenSeleccionada: $imagenSeleccionada")

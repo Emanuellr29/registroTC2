@@ -36,7 +36,7 @@ class FragmentIgm : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recicler = view.findViewById(R.id.recycleViewImg)
+        recicler = view.findViewById(R.id.RGaleria)
         recicler.layoutManager = GridLayoutManager(requireContext(), 3)
         recicler.adapter = FragmentAdaptador(Imagenes){ imagenSeleccionada ->
             setFragmentResult("imagenSeleccionada", Bundle().apply { putInt("resId", imagenSeleccionada)})
