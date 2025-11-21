@@ -45,10 +45,26 @@
         <argument
             android:name="cinco"
             app:argType="string" />
+        <action
+            android:id="@+id/action_fragmentexam_to_fragmentLista"
+            app:destination="@id/fragmentLista" />
     </fragment>
     <fragment
         android:id="@+id/fragmentIgm"
         android:name="com.example.actividad1.FragmentIgm"
         android:label="fragment_igm"
         tools:layout="@layout/fragment_igm" />
+    <fragment
+        android:id="@+id/fragmentLista"
+        android:name="com.example.actividad1.FragmentLista"
+        android:label="fragment_lista"
+        tools:layout="@layout/fragment_lista" >
+        <action
+            android:id="@+id/action_fragmentLista_to_fragmentImagenes"
+            app:destination="@id/fragmentImagenes" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentImagenes"
+        android:name="com.example.actividad1.FragmentImagenes"
+        android:label="FragmentImagenes" />
 </navigation>

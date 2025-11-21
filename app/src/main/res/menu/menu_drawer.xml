@@ -25,5 +25,12 @@
             android:id="@+id/fragmentexam"
             />
 
+        <item
+
+            android:icon="@drawable/finanzas"
+            android:title="Ir a mis finanzas"
+            android:id="@+id/fragmentLista"
+            />
+
     </group>
 </menu>

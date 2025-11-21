@@ -46,7 +46,7 @@ class principal : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Menu"
         //para la navegacion =
-        val appbar = AppBarConfiguration(setOf(R.id.fragment1, R.id.fragment2,R.id.fragmentexam),drawerLayout)
+        val appbar = AppBarConfiguration(setOf(R.id.fragment1, R.id.fragment2,R.id.fragmentexam, R.id.fragmentLista),drawerLayout)
         //val appbar = AppBarConfiguration(navController.graph, drawerLayout)
         NavigationUI.setupWithNavController(toolbar, navController, appbar)
         NavigationUI.setupWithNavController(navView, navController)
@@ -69,6 +69,7 @@ class principal : AppCompatActivity() {
                     val bundleExamen = bundleOf("cinco" to "5")
                     navController.navigate(R.id.fragmentexam, bundleExamen)
                 }
+                R.id.fragmentLista -> navController.navigate(R.id.fragmentLista, bundle)
             }
             true
         }
